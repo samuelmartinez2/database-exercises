@@ -1,7 +1,8 @@
 USE codeup_test_db;
-TRUNCATE albums,
+
+TRUNCATE albums;
 INSERT INTO albums (artist, name, release_date, sales, genre)
-VALUES ('Michale Jackson', 'Thriller', '1982', '50.2', 'Pop, post_disco, funk, rock.'),
+VALUES ('Michael Jackson', 'Thriller', '1982', '50.2', 'Pop, post_disco, funk, rock.'),
        ('AC/DC', 'Back in Black', '1980', '30.1', 'Hard Rock'),
        ('Whitney Houston / various artists', 'The Bodyguard', '1992','28.7','R&B, soul, pop, soundtrack'),
        ('Eagles','Their Greatest Hits (1971–1975)','1976','44','Country rock, soft rock, folk rock'),
