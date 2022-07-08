@@ -85,3 +85,22 @@ FROM employees
 WHERE first_name LIKE 'a%'
 GROUP BY first_name
 ORDER BY COUNT(first_name) DESC;
+
+
+# ////////// Aliases  /////////////////
+
+SELECT CONCAT(first_name, ' ', last_name) AS full_name
+FROM employees
+LIMIT 25;
+
+SELECT CONCAT(first_name, ' ', last_name) AS full_name
+FROM employees
+GROUP BY full_name, last_name
+ORDER BY last_name
+LIMIT 25;
+
+SELECT CONCAT(first_name, ' ', last_name) AS full_name
+FROM employees AS emp
+GROUP BY full_name, last_name
+ORDER BY last_name
+LIMIT 25;
