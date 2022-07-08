@@ -47,3 +47,41 @@ SELECT * FROM employees.employees WHERE emp_no < 20000 ORDER BY last_name DESC,f
 SELECT * FROM employees.employees WHERE last_name = 'Oxenboll' LIMIT 5;
 
 SELECT * FROM employees.employees WHERE last_name = 'Oxenboll' LIMIT 5 OFFSET 5;
+
+
+# ////////// FUNCTIONS   /////////////////
+
+SELECT CONCAT('Hello ', 'Codeup', '!');
+
+SELECT CURTIME();
+
+SELECT *
+FROM employees
+WHERE year(birth_date) BETWEEN 1950 AND 1959
+  AND month(birth_date) = 7
+  AND day(birth_date) = 4;
+
+
+SELECT CONCAT(
+               'Teaching people to code for ',
+               UNIX_TIMESTAMP() - UNIX_TIMESTAMP('2014-02-04'),
+               ' seconds'
+           );
+
+
+# ////////// GROUP BY  /////////////////
+
+SELECT DISTINCT first_name
+FROM employees;
+
+SELECT last_name, first_name
+FROM employees
+GROUP BY last_name, first_name;
+
+SELECT COUNT(*) FROM employees;
+
+SELECT first_name, COUNT(first_name)
+FROM employees
+WHERE first_name LIKE 'a%'
+GROUP BY first_name
+ORDER BY COUNT(first_name) DESC;
