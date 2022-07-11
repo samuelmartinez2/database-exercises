@@ -104,3 +104,57 @@ FROM employees AS emp
 GROUP BY full_name, last_name
 ORDER BY last_name
 LIMIT 25;
+
+
+# ////////////////// RELATIONSHIPS /////////////////////
+
+
+SELECT CONCAT(first_name, ' ', last_name)
+FROM employees
+WHERE emp_no IN (
+    SELECT emp_no
+    FROM dept_emp
+    WHERE dept_no IN (
+        SELECT dept_no
+        FROM departments
+        WHERE dept_name = 'Customer Service'
+        )
+    );
+
+# //////////adding too date in order to get current employees////
+
+SELECT CONCAT(first_name, ' ', last_name)
+FROM employees
+WHERE emp_no IN (
+    SELECT emp_no
+    FROM dept_emp
+    WHERE YEAR(to_date) = 9999 AND dept_no IN (
+        SELECT dept_no
+        FROM departments
+        WHERE dept_name = 'Customer Service'
+    )
+);
+
+SELECT dept_name
+FROM departments
+Where dept_no IN (
+    SELECT dept_no
+    FROM dept_emp
+    WHERE emp_no IN (
+        SELECT emp_no
+        FROM salaries
+        WHERE salary IN (
+            SELECT MAX(salary)
+            FROM salaries
+            WHERE YEAR(to_date
+                      ) = 9999
+        )
+    )
+    );
+
+SELECT d.dept_name, s.salary
+FROM departments d
+JOIN dept_emp de on d.dept_no = de.dept_no
+JOIN salaries s on de.emp_no = s.emp_no
+ORDER BY s.salary DESC
+LIMIT 1;
