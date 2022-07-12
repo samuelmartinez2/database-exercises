@@ -63,10 +63,6 @@ WHERE emp_no IN (
 
 
 
-
-
-
-
 SELECT dept_name
 FROM departments
 Where dept_no IN (
